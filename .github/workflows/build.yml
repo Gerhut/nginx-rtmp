@@ -1,0 +1,15 @@
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+        echo $GITHUB_TOKEN | docker login ghcr.io --username $GITHUB_ACTOR --passwork-stdin
+        docker build --tag ghcr.io/$GITHUB_REPOSITORY .
+        docker push ghcr.io/$GITHUB_REPOSITORY
