@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          docker login ghcr.io --username $GITHUB_ACTOR --password $GITHUB_TOKEN
+          docker login --username $GITHUB_ACTOR --password $GITHUB_TOKEN ghcr.io
           docker build --tag ghcr.io/$GITHUB_REPOSITORY .
           docker push ghcr.io/$GITHUB_REPOSITORY
